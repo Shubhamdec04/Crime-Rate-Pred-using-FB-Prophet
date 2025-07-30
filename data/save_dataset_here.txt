@@ -1,0 +1,1 @@
+Extract the dataset.zip, and save the crime_rates.csv in this folder since it is 300+ Mb.

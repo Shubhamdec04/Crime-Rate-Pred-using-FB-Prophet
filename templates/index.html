@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crime Rate Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crime Rate Prediction</h1>
+        <form method="post">
+            <label for="model">Select Model:</label>
+            <select name="model" required>
+                <option value="plain_model.pkl">Plain Model</option>
+                <option value="no_outliers_model.pkl">No Outliers Model</option>
+                <option value="holidays_model.pkl">Holidays Model</option>
+            </select>
+            
+            <label for="crime_type">Select Crime Type:</label>
+    <select name="crime_type" required>
+        {% for crime in crime_types %}
+            <option value="{{ crime }}">{{ crime }}</option>
+        {% endfor %}
+    </select>
+
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" required>
+
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
